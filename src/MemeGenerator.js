@@ -11,6 +11,7 @@ class MemeGenerator extends Component {
             
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -18,7 +19,9 @@ class MemeGenerator extends Component {
         .then(response => response.json())
         .then(response => {
             const {memes} = response.data
-            this.setState({ allMemeImgs: memes }) 
+            this.setState({ 
+                allMemeImgs: memes 
+            }) 
         })
     }
 
@@ -59,10 +62,10 @@ class MemeGenerator extends Component {
                     <button>Gen..</button>
                 </form>
 
-                <div>
-                    <img src="" />
-                    <h1 className=""></h1>
-                    <h1 className=""></h1>
+                <div className="meme">
+                    <img src={this.state.randomImg} alt="" />
+                    <h2 className="top">{this.state.topText}</h2>
+                    <h2 className="bottom">{this.state.bottomText}</h2>
                 </div>
             </div>
         )
